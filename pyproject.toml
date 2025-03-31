@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "whisper-lm-transformers"
+version = "0.1.0"
+description = "Add language model support to HF Transformers' Whisper models"
+readme = "README.md"
+authors = [
+  { name="Xabier de Zuazo", email="xabier@zuazo.org" }
+]
+license = {file = "LICENSE"}
+keywords = ["whisper", "kenlm", "llm", "transformers", "speech-recognition"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "datasets",
+    "evaluate",
+    "jiwer",
+    "librosa",
+    "optuna>=4.1.0",
+    "openai-whisper",
+    "tabulate",
+    "transformers>=4.31.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/hitz-zentroa/whisper-lm-transformers"
+"Source" = "https://github.com/hitz-zentroa/whisper-lm-transformers"
+
+[project.scripts]
+whisper_evaluate_with_hf = "whisper_lm_transformers.scripts.whisper_evaluate_with_hf:main"
+whisper_lm_optimizer_with_hf = "whisper_lm_transformers.scripts.whisper_lm_optimizer_with_hf:main"
+
+[project.optional-dependencies]
+dev = [
+    "autoflake==2.3.1",
+    "bandit==1.8.3",
+    "black==25.1.0",
+    "blacken-docs==1.19.1",
+    "flake8==7.1.2",
+    "isort==6.0.1",
+    "pydocstringformatter==0.7.3",
+    "pylint==3.3.4",
+    "ruff==0.9.10",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.pylint]
+extension-pkg-allow-list=["kenlm"]
+disable=["R0801"]
+
+[tool.pylint.FORMAT]
+max-line-length = 88
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "E701"]
+
+[tool.pycodestyle]
+max-line-length = 88
+ignore = ["E203", "E701"]
