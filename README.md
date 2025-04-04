@@ -37,13 +37,17 @@ task called "whisper-with-lm". Once imported, you can do:
 
 ```python
 >>> from transformers import pipeline
+>>> from huggingface_hub import hf_hub_download
 >>> import whisper_lm_transformers  # Required to register the new pipeline
+
+>>> # Download the n-gram model
+>>> lm_model = hf_hub_download(repo_id="HiTZ/whisper-lm-ngrams", filename="5gram-eu.bin")
 
 >>> # Example: KenLM-based decoding
 >>> pipe = pipeline(
 ...     "whisper-with-lm",
 ...     model="zuazo/whisper-tiny-eu",
-...     lm_model="tests/5gram-eu.bin", # Provide a kenlm model path
+...     lm_model=lm_model, # Provide a kenlm model path
 ...     lm_alpha=0.33582369,
 ...     lm_beta=0.68825565,
 ...     language="eu",
@@ -56,7 +60,7 @@ task called "whisper-with-lm". Once imported, you can do:
 ```
 
 **Note:** In the example above, we use our [Basque KenLM
-model](https://aholab.ehu.eus/~xzuazo/models/Basque%20LMs/5gram.bin). Optimize
+model](https://huggingface.co/HiTZ/whisper-lm-ngrams). Optimize
 the `lm_alpha`, `lm_beta`, etc., for best results with your own models.
 
 #### Integrating a Large Language Model
