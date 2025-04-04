@@ -151,10 +151,18 @@ environment and run tests before submitting changes.
 
 If you find this helpful in your research, please cite:
 
-```
-@misc{whisper-lm,
-  title = {Whisper-LM: Improving ASR Models with Language Models for Low-Resource Languages},
-  author = {de Zuazo, Xabier and Navas, Eva and Saratxaga, Ibon and Hern{\'a}ez Rioja, Inma},
-  note = {Manuscript under review.}
+```bibtex
+@misc{dezuazo2025whisperlmimprovingasrmodels,
+      title={Whisper-LM: Improving ASR Models with Language Models for Low-Resource Languages},
+      author={Xabier de Zuazo and Eva Navas and Ibon Saratxaga and Inma Hernáez Rioja},
+      year={2025},
+      eprint={2503.23542},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2503.23542},
 }
 ```
+
+Please, check the related paper preprint in
+[arXiv:2503.23542](https://arxiv.org/abs/2503.23542)
+for more details.
