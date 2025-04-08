@@ -1,5 +1,9 @@
 # Whisper-LM-Transformers
 
+[![PyPI - Version](https://img.shields.io/pypi/v/whisper-lm-transformers)](https://pypi.org/project/whisper-lm-transformers/)
+[![arXiv - Paper](https://img.shields.io/badge/cs.CL-2503.23542-b31b1b?&logo=arxiv&logoColor=red)](https://arxiv.org/abs/2503.23542)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 KenLM and Large language model integration with Whisper ASR models implemented
 in Hugging Face library.
 
