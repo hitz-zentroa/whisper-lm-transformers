@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "whisper-lm-transformers"
-version = "0.2.0"
+version = "0.3.0"
 description = "Add language model support to HF Transformers' Whisper models"
 readme = "README.md"
 authors = [
