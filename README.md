@@ -20,7 +20,7 @@ pip install .
 ```
 
 Besides, a recent version of
-[KenLM](pip install https://github.com/kpu/kenlm/archive/master.zip)
+[KenLM](https://github.com/kpu/kenlm)
 is required to use n-gram language models:
 
 ```shell
