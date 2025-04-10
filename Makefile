@@ -32,7 +32,7 @@ style: black isort pylint flake8 autopep8 pydocstyle ruff bandit autoflake pydoc
 
 # Install a recent version of KenLM package from GitHub:
 kenlm_install:
-	pip install https://github.com/kpu/kenlm/archive/master.zip
+	python -m pip install https://github.com/kpu/kenlm/archive/master.zip
 
 # Prepare environment for testing by downloading necessary LMs:
 test_req: kenlm_install
@@ -128,11 +128,11 @@ doctest: test_req
 # Install package for production use:
 install: kenlm_install
 	@echo "Installing package..."
-	pip install .
+	python -m pip install .
 	@echo
 
 # Install package for development use
 install-dev: kenlm_install
 	@echo "Installing package..."
-	pip install -e .[dev]
+	python -m pip install -e .[dev]
 	@echo
