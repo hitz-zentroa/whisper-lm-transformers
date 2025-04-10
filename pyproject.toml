@@ -46,7 +46,9 @@ dev = [
     "flake8==7.1.2",
     "isort==6.0.1",
     "pydocstringformatter==0.7.3",
+    "pydocstyle==6.3.0",
     "pylint==3.3.4",
+    "pytest==8.3.5",
     "ruff==0.9.10",
 ]
 
