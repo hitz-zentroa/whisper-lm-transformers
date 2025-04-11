@@ -59,7 +59,7 @@ task called "whisper-with-lm". Once imported, you can do:
 ... )
 
 >>> # Transcribe an audio file or array
->>> pipe("tests/data/audio.wav")["text"]
+>>> pipe("tests/fixtures/audio.mp3")["text"]
 'Talka diskoetxearekin grabatzen ditut beti abestien maketak.'
 
 ```
@@ -84,7 +84,7 @@ If you prefer to use a Large LM:
 ... )
 
 >>> # Transcribe an audio file or array
->>> pipe("tests/data/audio.wav")["text"]
+>>> pipe("tests/fixtures/audio.mp3")["text"]
 'Talka diskoetxearekin grabatzen ditut beti abestien maketak.'
 
 ```
