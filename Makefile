@@ -1,4 +1,4 @@
-.PHONY: all test style black isort pylint flake8 autopep8 pydocstyle ruff bandit autoflake pydocstringformatter unit doctest kenlm_install install
+.PHONY: all test style black isort pylint flake8 pydocstyle ruff bandit autoflake pydocstringformatter unit doctest kenlm_install install
 
 # Targets to help running the tests.
 #
@@ -28,7 +28,7 @@ all: test
 # Run the style, unit and doc tests:
 test: style unit doctest
 
-style: black isort pylint flake8 autopep8 pydocstyle ruff bandit autoflake pydocstringformatter
+style: black isort pylint flake8 pydocstyle ruff bandit autoflake pydocstringformatter
 
 # Install a recent version of KenLM package from GitHub:
 kenlm_install:
@@ -64,19 +64,6 @@ pylint:
 flake8:
 	@echo "Checking flake8..."
 	flake8 $(FILES)
-	@echo
-
-# Auto-format Python files using autopep8:
-autopep8:
-	@echo "Checking autopep8 for changes..."
-	@diffout=$$(autopep8 --diff $(FILES)); \
-	if [ -z "$$diffout" ]; then \
-	    echo "No changes needed!"; \
-	else \
-	    echo "Code formatting needed. Here is the diff:"; \
-	    echo "$$diffout"; \
-	    exit 1; \
-	fi
 	@echo
 
 # Check Python files for docstring style using pydocstyle:

@@ -60,8 +60,6 @@ Here’s the summary of each style/linter tool that runs under `make style`:
    checks code for errors, style, etc.
 4. [`flake8`](https://flake8.pycqa.org/en/latest/) – a wrapper around PyFlakes,
    pycodestyle, and Ned Batchelder’s McCabe script.
-5. [`autopep8`](https://github.com/hhatto/autopep8) – auto-formats Python code
-   to conform to [PEP 8](https://peps.python.org/pep-0008/).
 6. [`pydocstyle`](http://www.pydocstyle.org/en/stable/) – enforces docstring
    conventions ([PEP 257](https://peps.python.org/pep-0008/)).
 7. [`ruff`](https://github.com/charliermarsh/ruff/) – a fast Python
