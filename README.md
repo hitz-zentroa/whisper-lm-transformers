@@ -46,7 +46,9 @@ task called "whisper-with-lm". Once imported, you can do:
 >>> import whisper_lm_transformers  # Required to register the new pipeline
 
 >>> # Download the n-gram model
->>> lm_model = hf_hub_download(repo_id="HiTZ/whisper-lm-ngrams", filename="5gram-eu.bin")
+>>> lm_model = hf_hub_download(
+...     repo_id="HiTZ/whisper-lm-ngrams", filename="5gram-eu.bin"
+... )
 
 >>> # Example: KenLM-based decoding
 >>> pipe = pipeline(
@@ -99,9 +101,15 @@ If you prefer manual control, you can use the `WhisperWithLM` class:
 ```python
 >>> from datasets import Audio, load_dataset
 >>> from transformers import WhisperProcessor
+>>> from huggingface_hub import hf_hub_download
 >>> from whisper.audio import load_audio
 
 >>> from whisper_lm_transformers import WhisperWithLM
+
+>>> # Download the n-gram model
+>>> lm_model = hf_hub_download(
+...     repo_id="HiTZ/whisper-lm-ngrams", filename="5gram-eu.bin"
+... )
 
 >>> # Load the model
 >>> model_name = "zuazo/whisper-tiny-eu"
@@ -117,7 +125,7 @@ If you prefer manual control, you can use the `WhisperWithLM` class:
 >>> generated = model.generate(
 ...     input_features=inputs["input_features"],
 ...     tokenizer=processor.tokenizer,
-...     lm_model="tests/5gram-eu.bin", # Provide a kenlm model path
+...     lm_model=lm_model, # Provide a kenlm model path
 ...     lm_alpha=0.33582369,
 ...     lm_beta=0.68825565,
 ...     num_beams=5,

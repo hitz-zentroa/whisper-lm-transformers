@@ -34,9 +34,8 @@ style: black isort pylint flake8 pydocstyle ruff bandit autoflake pydocstringfor
 kenlm_install:
 	python -m pip install https://github.com/kpu/kenlm/archive/master.zip
 
-# Prepare environment for testing by downloading necessary LMs:
-test_req:
-	# This replaces the 5gram-$(LLANG).bin target during tests
+# Download the Basque n-gram LM:
+5gram-eu.bin:
 	@echo "Downloading LM..."
 	if [ ! -e 5gram-eu.bin ]; then \
 	    wget -q -O 5gram-eu.bin https://aholab.ehu.eus/~xzuazo/models/Basque%20LMs/5gram.bin ; \
@@ -97,13 +96,13 @@ pydocstringformatter:
 	@echo
 
 # Run unit tests:
-unit: test_req
+unit:
 	@echo "Running pytest..."
 	python -m pytest
 	@echo
 
 # Test doc examples:
-doctest: test_req
+doctest:
 	@if [ -z "$(TEST_LLM)" ]; then \
 		echo "TEST_LLM environment variable not set. Skipping doctests."; \
 	else \
