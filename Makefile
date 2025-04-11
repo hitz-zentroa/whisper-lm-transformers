@@ -35,7 +35,7 @@ kenlm_install:
 	python -m pip install https://github.com/kpu/kenlm/archive/master.zip
 
 # Prepare environment for testing by downloading necessary LMs:
-test_req: kenlm_install
+test_req:
 	# This replaces the 5gram-$(LLANG).bin target during tests
 	@echo "Downloading LM..."
 	if [ ! -e 5gram-eu.bin ]; then \
