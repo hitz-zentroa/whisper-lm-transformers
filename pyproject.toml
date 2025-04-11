@@ -21,10 +21,11 @@ requires-python = ">=3.8"
 dependencies = [
     "datasets",
     "evaluate",
+    "huggingface-hub==0.29.2",
     "jiwer",
     "librosa",
-    "optuna>=4.1.0",
     "openai-whisper",
+    "optuna>=4.1.0",
     "tabulate",
     "transformers>=4.31.0",
 ]

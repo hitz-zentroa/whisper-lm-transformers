@@ -8,6 +8,7 @@ configurations used in testing the Whisper-LM integration.
 import os
 
 import pytest
+from huggingface_hub import hf_hub_download
 from whisper.audio import load_audio
 from whisper.normalizers import BasicTextNormalizer
 
@@ -46,8 +47,27 @@ def fixture_whisper_config(lang):  # pylint: disable=
     }
 
 
+@pytest.fixture(name="lm_path")
+def fixture_lm_path(lang):
+    """
+    Download and provide the path for the KenLM model.
+
+    Args:
+        lang (str): Language code used to locate the language-specific KenLM
+        model file.
+
+    Returns:
+        str:
+            The path of the KenLM language model.
+    """
+    lm_path = hf_hub_download(
+        repo_id="HiTZ/whisper-lm-ngrams", filename=f"5gram-{lang}.bin"
+    )
+    return lm_path
+
+
 @pytest.fixture(name="lm_config")
-def fixture_lm_config(lang):
+def fixture_lm_config(lm_path):
     """
     Provide the configuration for the KenLM model integration in the tests.
 
@@ -60,9 +80,8 @@ def fixture_lm_config(lang):
             Dictionary containing the path to the KenLM model and tuning
             parameters like alpha and beta.
     """
-    path = os.path.dirname(__file__)
     return {
-        "path": os.path.join(path, f"5gram-{lang}.bin"),
+        "path": lm_path,
         "alpha": 0.33582368603855817,
         "beta": 0.6882556478819416,
     }
