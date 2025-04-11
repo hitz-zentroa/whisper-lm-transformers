@@ -158,6 +158,64 @@ The package includes the following scripts:
 
 Run them with `--help` to see how to use them.
 
+### Optimizing Language Model Parameters
+
+Optimize the alpha and beta parameters for the LM:
+
+```shell
+whisper_lm_optimizer_with_hf "zuazo-whisper-tiny-eu.pt" \
+    --study_name "lm_optimizer-lm-whisper-tiny-eu" \
+    --dataset_split "train+validation" \
+    --dataset_shuffle "True" \
+    --dataset_name "eu" \
+    --language "eu" \
+    --beam_size 5 \
+    --lm_path "5gram-eu.bin" \
+    --n_trials 100
+    --journal_storage \
+    --n_jobs 28
+```
+
+We can also optimize for a large language models using the `--llm_path`
+argument:
+
+```shell
+whisper_lm_optimizer_with_hf "zuazo-whisper-tiny-eu.pt" \
+    --study_name "lm_optimizer-llm-whisper-tiny-eu" \
+    --dataset_split "train+validation" \
+    --dataset_name "eu" \
+    --dataset_shuffle "True" \
+    --dataset_n 4000 \
+    --language "eu" \
+    --beam_size 5 \
+    --llm_path "HiTZ/latxa-7b-v1.2" \
+    --lm_alpha_min 0 --lm_beta_min 0 \
+    --lm_alpha_max 3 --lm_beta_max 3 \
+    --n_trials 100 \
+    --journal_storage \
+    --n_jobs 1
+```
+
+In this case, we will limit the jobs to 1 per GPU, because we are loading both
+the Whisper and the LLM model in the GPU memory. This was run in 7 NVIDIA
+A100-SXM4-80GB GPU.
+
+### Evaluating Models
+
+Evaluate the performance on standard datasets or your own data:
+
+```shell
+whisper_evaluate_with_hf "zuazo-whisper-tiny-eu.pt" \
+    --dataset "mozilla-foundation/common_voice_13_0" \
+    --dataset_name "eu" \
+    --dataset_split "test" \
+    --language "eu" \
+    --temperature 0 \
+    --beam_size 5 \
+    --lm_path "5gram-eu.bin" \
+    --lm_alpha 0.33582369 --lm_beta 0.68825565
+```
+
 ## Contributing
 
 Contributions, bug reports, and feature requests are welcome! Please check out
