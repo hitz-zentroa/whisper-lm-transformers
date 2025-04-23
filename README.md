@@ -164,7 +164,7 @@ Run them with `--help` to see how to use them.
 Optimize the alpha and beta parameters for the LM:
 
 ```shell
-whisper_lm_optimizer_with_hf "zuazo-whisper-tiny-eu.pt" \
+whisper_lm_optimizer_with_hf "zuazo/whisper-tiny-eu" \
     --study_name "lm_optimizer-lm-whisper-tiny-eu" \
     --dataset_split "train+validation" \
     --dataset_shuffle "True" \
@@ -181,7 +181,7 @@ We can also optimize for a large language models using the `--llm_path`
 argument:
 
 ```shell
-whisper_lm_optimizer_with_hf "zuazo-whisper-tiny-eu.pt" \
+whisper_lm_optimizer_with_hf "zuazo/whisper-tiny-eu" \
     --study_name "lm_optimizer-llm-whisper-tiny-eu" \
     --dataset_split "train+validation" \
     --dataset_name "eu" \
@@ -206,7 +206,7 @@ A100-SXM4-80GB GPU.
 Evaluate the performance on standard datasets or your own data:
 
 ```shell
-whisper_evaluate_with_hf "zuazo-whisper-tiny-eu.pt" \
+whisper_evaluate_with_hf "zuazo/whisper-tiny-eu" \
     --dataset "mozilla-foundation/common_voice_13_0" \
     --dataset_name "eu" \
     --dataset_split "test" \
